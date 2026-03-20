@@ -7,7 +7,7 @@ import { education } from "@cv";
 <Section title="Educación">
     <ul>
     {
-        education.map(({ institution, startDate, endDate, area }) => {
+        education.map(({ institution, startDate, endDate, area, summary }) => {
             const startYear = new Date(startDate).getFullYear();
             const endYear =
             endDate != null ? new Date(endDate).getFullYear() : "Actual";
@@ -21,7 +21,7 @@ import { education } from "@cv";
                   <h3>{institution}</h3>
                 </div>
 
-                <time>{years}</time>
+                <h4>{years} {summary}</h4>
               </header>
 
               <footer>

@@ -43,13 +43,24 @@
         }
     ],
     "education": [
+        
+        {
+            "institution": "UNIR",
+            "url": "https://colombia.unir.net",
+            "area": "Ingeniería Informática",
+            "studyType": "Ingenieria",
+            "startDate": "Julio 2023",
+            "endDate": "Junio 2027",
+            "summary": "Cursando"
+        },
         {
             "institution": "SENA",
             "url": "https://www.sena.edu.co/es-co/Paginas/default.aspx",
-            "area": "Técnico en Sistemas",
-            "studyType": "Técnico",
-            "startDate": "Marzo 2023",
-            "endDate": "Julio 2024"
+            "area": "Técnologo en Análisis y Desarrollo de Software",
+            "studyType": "Tecnologo",
+            "startDate": "Diciembre 2025",
+            "endDate": "Septiembre 2027",
+            "summary": "Cursando"
         },
         {
             "institution": "EAN Campuslands",
@@ -60,13 +71,12 @@
             "endDate": "Julio 2025"
         },
         {
-            "institution": "UNIR",
-            "url": "https://colombia.unir.net",
-            "area": "Ingeniería Informática",
-            "studyType": "Grado",
-            "startDate": "Julio 2023",
-            "endDate": "Junio 2027",
-            "summary": "Cursando 5to semestre"
+            "institution": "SENA",
+            "url": "https://www.sena.edu.co/es-co/Paginas/default.aspx",
+            "area": "Técnico en Sistemas",
+            "studyType": "Técnico",
+            "startDate": "Marzo 2023",
+            "endDate": "Julio 2024"
         }
     ],
     "skills": [
