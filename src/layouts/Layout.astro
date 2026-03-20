@@ -14,13 +14,182 @@ interface Props{
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{Astro.props.title}</title>
+		<script is:inline>
+			(() => {
+				// Por defecto: siempre modo claro. (Ignoramos prefers-color-scheme.)
+				// Si existe un valor guardado en localStorage, lo usamos.
+				let theme = "light";
+				try {
+					const stored = localStorage.getItem("theme");
+					if (stored === "dark" || stored === "light") theme = stored;
+				} catch {
+					// Ignorar si localStorage no esta disponible.
+				}
+				document.documentElement.dataset.theme = theme;
+			})();
+		</script>
 	</head>
 	<body>
+		<button
+			id="theme-toggle"
+			type="button"
+			class="theme-toggle no-print"
+			role="switch"
+			aria-checked="false"
+			aria-label="Activar modo oscuro"
+		>
+			<span class="theme-toggle__thumb" aria-hidden="true">
+				<span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+					<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+						<path
+							fill="currentColor"
+							d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm0-16a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1Zm0 18a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1Zm10-8a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1ZM4 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1Zm15.07 6.07a1 1 0 0 1-1.41 0l-.7-.7a1 1 0 1 1 1.41-1.41l.7.7a1 1 0 0 1 0 1.41ZM7.04 6.46a1 1 0 0 1-1.41 0l-.7-.7A1 1 0 1 1 6.34 4.35l.7.7a1 1 0 0 1 0 1.41Zm12.02-1.4a1 1 0 0 1 0 1.41l-.7.7a1 1 0 1 1-1.41-1.41l.7-.7a1 1 0 0 1 1.41 0ZM6.46 17.66a1 1 0 0 1 0 1.41l-.7.7a1 1 0 1 1-1.41-1.41l.7-.7a1 1 0 0 1 1.41 0Z"
+						/>
+					</svg>
+				</span>
+				<span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+					<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+						<path
+							fill="currentColor"
+							d="M21.64 13a1 1 0 0 0-1.09-.2 8.5 8.5 0 0 1-10.88-10.88 1 1 0 0 0-.2-1.09 1 1 0 0 0-1.1-.23A10.5 10.5 0 1 0 21.87 14.1a1 1 0 0 0-.23-1.1ZM12 20a8.49 8.49 0 0 1-7.79-5.1A10.47 10.47 0 0 0 16.9 12.2 8.49 8.49 0 0 1 12 20Z"
+						/>
+					</svg>
+				</span>
+			</span>
+			<span class="theme-toggle__sr-only">Cambiar modo</span>
+		</button>
 		<slot />
+		<script is:inline>
+			(() => {
+				const btn = document.getElementById("theme-toggle");
+				if (!btn) return;
+
+				const root = document.documentElement;
+				const getTheme = () => root.dataset.theme || "light";
+				let jellyTimer = null;
+				const triggerJelly = () => {
+					// Forzamos reflow para que la animación se dispare siempre al cambiar.
+					root.classList.remove("theme-jelly");
+					// eslint-disable-next-line no-unused-expressions
+					void root.offsetWidth;
+					root.classList.add("theme-jelly");
+					if (jellyTimer) window.clearTimeout(jellyTimer);
+					jellyTimer = window.setTimeout(() => {
+						root.classList.remove("theme-jelly");
+					}, 520);
+				};
+
+				const syncLabel = () => {
+					const theme = getTheme();
+					const isDark = theme === "dark";
+					btn.setAttribute("aria-checked", String(isDark));
+					btn.setAttribute(
+						"aria-label",
+						isDark ? "Activar modo claro" : "Activar modo oscuro"
+					);
+
+					const sr = btn.querySelector(".theme-toggle__sr-only");
+					if (sr) {
+						sr.textContent = isDark ? "Modo oscuro activado" : "Modo claro activado";
+					}
+				};
+
+				syncLabel();
+
+				btn.addEventListener("click", () => {
+					const current = getTheme();
+					const next = current === "dark" ? "light" : "dark";
+					root.dataset.theme = next;
+					triggerJelly();
+					try {
+						localStorage.setItem("theme", next);
+					} catch {
+						// Ignorar si localStorage no esta disponible
+					}
+					syncLabel();
+				});
+			})();
+		</script>
 	</body>
 </html>
 
 <style is:global>
+	:root{
+		--color-bg: #ffffff;
+		--color-surface: #fdfdfd;
+		--color-text: #111111;
+		--color-heading: #444444;
+		--color-muted: #666666;
+		--color-muted-2: #555555;
+		--color-link: #777777;
+		--color-border: #eeeeee;
+		--color-border-strong: #dddddd;
+		--color-card-border: #f2f2f2;
+		--color-chip-bg: #eeeeee;
+		--color-chip-text: #444444;
+		--color-kbd-bg: #eeeeee;
+		--color-skill-bg: #bfbfbf;
+		--color-accent: rgb(255, 0, 0);
+		/* Aura del Hero: modo claro -> negro */
+		--aura-color: rgba(0, 0, 0, 0.28);
+		--aura-color-strong: rgba(0, 0, 0, 0.62);
+		--aura-ring: rgba(0, 0, 0, 0.22);
+		--aura-color-far: rgba(0, 0, 0, 0.12);
+		color-scheme: light;
+	}
+
+	@media (prefers-color-scheme: dark){
+		/* Si el usuario eligió explícitamente `light`, no forzamos el tema oscuro. */
+		html:not([data-theme="light"]){
+			--color-bg: #0b0f19;
+			--color-surface: #111827;
+			--color-text: #f3f4f6;
+			--color-heading: #d1d5db;
+			--color-muted: #a3a3a3;
+			--color-muted-2: #9ca3af;
+			--color-link: #c4c4c4;
+			--color-border: #273244;
+			--color-border-strong: #334155;
+			--color-card-border: #1f2937;
+			--color-chip-bg: #1f2937;
+			--color-chip-text: #cbd5e1;
+			--color-kbd-bg: #1f2937;
+			--color-skill-bg: #374151;
+			--color-accent: rgb(255, 90, 90);
+			/* Si el usuario eligió explícitamente `light`, no forzamos el tema oscuro. */
+			/* Aura del Hero: modo oscuro -> blanco */
+			--aura-color: rgba(255, 255, 255, 0.36);
+			--aura-color-strong: rgba(255, 255, 255, 0.9);
+			--aura-ring: rgba(255, 255, 255, 0.35);
+			--aura-color-far: rgba(255, 255, 255, 0.18);
+			color-scheme: dark;
+		}
+	}
+
+	html[data-theme="dark"]{
+		--color-bg: #0b0f19;
+		--color-surface: #111827;
+		--color-text: #f3f4f6;
+		--color-heading: #d1d5db;
+		--color-muted: #a3a3a3;
+		--color-muted-2: #9ca3af;
+		--color-link: #c4c4c4;
+		--color-border: #273244;
+		--color-border-strong: #334155;
+		--color-card-border: #1f2937;
+		--color-chip-bg: #1f2937;
+		--color-chip-text: #cbd5e1;
+		--color-kbd-bg: #1f2937;
+		--color-skill-bg: #374151;
+		--color-accent: rgb(255, 90, 90);
+		/* Aura del Hero: modo oscuro -> blanco */
+		--aura-color: rgba(255, 255, 255, 0.36);
+		--aura-color-strong: rgba(255, 255, 255, 0.9);
+		--aura-ring: rgba(255, 255, 255, 0.35);
+		--aura-color-far: rgba(255, 255, 255, 0.18);
+		color-scheme: dark;
+	}
+
 	html{
 		font-family: 
 			Menlo, 
@@ -29,8 +198,10 @@ interface Props{
 			"Courier New", 
 			Courier,
 			monospace;
-		background:#ffff;
+		background-color: var(--color-bg);
+		color: var(--color-text);
 		letter-spacing: -0.025rem;
+		transition: background-color .45s cubic-bezier(.2,1.1,.2,1), color .45s cubic-bezier(.2,1.1,.2,1);
 	}
 
 	body,
@@ -70,11 +241,146 @@ interface Props{
 	}
 
 	p{
-		color: #666;
+		color: var(--color-muted);
 		font-size: .9rem;
 		line-height: 1.5;
 		margin: 0;
 		text-wrap: pretty;
+	}
+
+	.theme-toggle{
+		position: fixed;
+		top: 16px;
+		right: 16px;
+		z-index: 50;
+
+		background: var(--color-surface);
+		color: var(--color-text);
+		border: 1px solid var(--color-border);
+		border-radius: 10px;
+		width: 54px;
+		height: 30px;
+		padding: 0;
+		border-radius: 999px;
+		cursor: pointer;
+		transition: background .45s cubic-bezier(.2,1.1,.2,1), border-color .45s cubic-bezier(.2,1.1,.2,1), transform .18s ease;
+		overflow: hidden;
+	}
+
+	.theme-toggle:hover{
+		background: var(--color-border);
+	}
+
+	.theme-toggle:active{
+		transform: translateY(1px);
+	}
+
+	.theme-toggle:focus-visible{
+		outline: 2px solid var(--color-border-strong);
+		outline-offset: 2px;
+	}
+
+	.theme-toggle__thumb{
+		position: absolute;
+		top: 3px;
+		left: 3px;
+		width: 24px;
+		height: 24px;
+		border-radius: 999px;
+		background: var(--color-text);
+		transition: transform .45s cubic-bezier(.2,1.1,.2,1);
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	html[data-theme="dark"] .theme-toggle__thumb{ transform: translateX(24px); }
+
+	.theme-toggle__icon{
+		color: var(--color-bg); /* Icon contrasta con el "thumb" */
+		opacity: 1;
+		z-index: 2;
+		transition: opacity .3s cubic-bezier(.2,1.1,.2,1), transform .45s cubic-bezier(.2,1.1,.2,1);
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transform: scale(1);
+	}
+
+	.theme-toggle__icon--moon{
+		opacity: 0;
+		transform: scale(0.9);
+	}
+
+	html[data-theme="dark"] .theme-toggle__icon--sun{
+		opacity: 0;
+		transform: scale(0.9);
+	}
+
+	html[data-theme="dark"] .theme-toggle__icon--moon{
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	@keyframes themeThumbToDark{
+		0% { transform: translateX(0) scale(1); }
+		55% { transform: translateX(24px) scale(1.12); }
+		75% { transform: translateX(24px) scale(.98); }
+		100% { transform: translateX(24px) scale(1); }
+	}
+
+	@keyframes themeThumbToLight{
+		0% { transform: translateX(24px) scale(1); }
+		55% { transform: translateX(0) scale(1.12); }
+		75% { transform: translateX(0) scale(.98); }
+		100% { transform: translateX(0) scale(1); }
+	}
+
+	@keyframes themeIconPopIn{
+		0% { opacity: 0; transform: scale(.85); }
+		60% { opacity: 1; transform: scale(1.15); }
+		100% { opacity: 1; transform: scale(1); }
+	}
+
+	@keyframes themeIconPopOut{
+		0% { opacity: 1; transform: scale(1); }
+		70% { opacity: 0; transform: scale(.8); }
+		100% { opacity: 0; transform: scale(.8); }
+	}
+
+	/* Solo animamos al hacer click gracias a `.theme-jelly`. */
+	html.theme-jelly[data-theme="dark"] .theme-toggle__thumb{
+		animation: themeThumbToDark .45s cubic-bezier(.2,1.1,.2,1) both;
+	}
+	html.theme-jelly[data-theme="light"] .theme-toggle__thumb{
+		animation: themeThumbToLight .45s cubic-bezier(.2,1.1,.2,1) both;
+	}
+	html.theme-jelly[data-theme="dark"] .theme-toggle__icon--moon{
+		animation: themeIconPopIn .45s cubic-bezier(.2,1.1,.2,1) both;
+	}
+	html.theme-jelly[data-theme="dark"] .theme-toggle__icon--sun{
+		animation: themeIconPopOut .35s cubic-bezier(.2,1.1,.2,1) both;
+	}
+	html.theme-jelly[data-theme="light"] .theme-toggle__icon--sun{
+		animation: themeIconPopIn .45s cubic-bezier(.2,1.1,.2,1) both;
+	}
+	html.theme-jelly[data-theme="light"] .theme-toggle__icon--moon{
+		animation: themeIconPopOut .35s cubic-bezier(.2,1.1,.2,1) both;
+	}
+
+	.theme-toggle__sr-only{
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
 	}
 
 	@media print{
