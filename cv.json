@@ -1,0 +1,194 @@
+{
+    "basics": {
+        "name": "Juan David Gomez Niño",
+        "label": "Técnico en Sistemas, Técnico en Desarrollo de Software, Ingeniería Informática (Cursando 5to semestre)",
+        "image": "https://raw.githubusercontent.com/juangomezn/juangomezn/refs/heads/main/profile.png",
+        "email": "gomezninoj681@gmail.com",
+        "phone": "+57 316 793 4696",
+        "url": "",
+        "summary": "Técnico en Sistemas, Desarrollador de Software Junior e Ingeniero Informático en formación, con experiencia en proyectos académicos y personales. Especializado en desarrollo web, bases de datos, backend y frontend, trabajando con JavaScript, GitHub, Python, Express, MySQL, HTML, CSS, Node.js y MongoDB. Enfocado en el desarrollo de código escalable y mantenible para lograr resultados de alta calidad. Responsable, atento, con habilidades sociales, trabajo en equipo y actitud autodidacta.",
+        "location": {
+            "address": "Cll 2c # 25-98",
+            "postalCode": "",
+            "city": "Duitama",
+            "countryCode": "CO",
+            "region": "Boyacá, Colombia"
+        },
+        "profiles": [
+            {
+                "network": "LinkedIn",
+                "username": "juangomezn",
+                "url": "https://www.linkedin.com/in/juangomezn"
+            },
+            {
+                "network": "GitHub",
+                "username": "juangomezn",
+                "url": "https://github.com/juangomezn"
+            }
+        ]
+    },
+    "work": [
+        {
+            "name": "Inversiones ElDorado",
+            "position": "Auxiliar de Sistemas",
+            "startDate": "2023-12-14",
+            "endDate": "2024-07-15",
+            "summary": "Empresa dedicada a la producción y comercialización de pollo en canal entero y despresado. Brindé soporte de TI, gestioné usuarios en ERP, realicé mantenimiento preventivo/correctivo y asistí en la administración de redes.",
+            "highlights": [
+                "Brindé soporte de TI a todos los departamentos, garantizando la continuidad operativa.",
+                "Gestioné la creación y administración de clientes en entornos ERP.",
+                "Realicé mantenimiento preventivo y correctivo de equipos informáticos.",
+                "Asistí en la administración de la infraestructura de redes y conectividad."
+            ]
+        }
+    ],
+    "education": [
+        {
+            "institution": "SENA",
+            "url": "https://www.sena.edu.co/es-co/Paginas/default.aspx",
+            "area": "Técnico en Sistemas",
+            "studyType": "Técnico",
+            "startDate": "Marzo 2023",
+            "endDate": "Julio 2024"
+        },
+        {
+            "institution": "EAN Campuslands",
+            "url": "https://campuslands.com",
+            "area": "Técnico en Desarrollo de Software",
+            "studyType": "Técnico",
+            "startDate": "Septiembre 2024",
+            "endDate": "Julio 2025"
+        },
+        {
+            "institution": "UNIR",
+            "url": "https://colombia.unir.net",
+            "area": "Ingeniería Informática",
+            "studyType": "Grado",
+            "startDate": "Julio 2023",
+            "endDate": "Junio 2027",
+            "summary": "Cursando 5to semestre"
+        }
+    ],
+    "skills": [
+        {
+            "name": "JavaScript",
+            "keywords": [
+                "Desarrollo Web",
+                "Frontend",
+                "Backend"
+            ]
+        },
+        {
+            "name": "Python",
+            "keywords": [
+                "Automatización",
+                "Backend",
+                "Análisis de Datos"
+            ]
+        },
+        {
+            "name": "HTML5",
+            "keywords": [
+                "Desarrollo Web",
+                "Frontend"
+            ]
+        },
+        {
+            "name": "CSS",
+            "keywords": [
+                "Desarrollo Web",
+                "Frontend",
+                "Diseño Responsive"
+            ]
+        },
+        {
+            "name": "Node.js",
+            "keywords": [
+                "Backend",
+                "APIs"
+            ]
+        },
+        {
+            "name": "Express",
+            "keywords": [
+                "Framework Backend",
+                "APIs REST"
+            ]
+        },
+        {
+            "name": "React",
+            "keywords": [
+                "Frontend",
+                "SPA",
+                "Componentes"
+            ]
+        },
+        {
+            "name": "GitHub",
+            "keywords": [
+                "Control de Versiones",
+                "Colaboración"
+            ]
+        },
+        {
+            "name": "MySQL Workbench",
+            "keywords": [
+                "Bases de Datos",
+                "SQL"
+            ]
+        },
+        {
+            "name": "MongoDB",
+            "keywords": [
+                "Bases de Datos",
+                "NoSQL"
+            ]
+        },
+        {
+            "name": "Git",
+            "keywords": [
+                "Control de Versiones"
+            ]
+        },
+        {
+            "name": "Postman",
+            "keywords": [
+                "Pruebas de API"
+            ]
+        }
+    ],
+    "languages": [
+        {
+            "language": "Español",
+            "fluency": "Nativo"
+        },
+        {
+            "language": "Inglés",
+            "fluency": "Básico"
+        }
+    ],
+    "projects": [
+        {
+            "name": "Acme School",
+            "isActive": true,
+            "description": "Plataforma educativa completa con Node.js, MongoDB y React para gestión de cursos, tareas y calificaciones.",
+            "highlights": [
+                "Módulos para creación y administración de cursos, tareas y calificaciones.",
+                "Sistema de roles y permisos para control de acceso.",
+                "Notificaciones en tiempo real."
+            ],
+            "url": "https://github.com/juangomezn/Proyecto_ExpressJS_GomezJuanDavid.git"
+        },
+        {
+            "name": "E-Commerce",
+            "isActive": true,
+            "description": "Plataforma de comercio electrónico con carrito de compras, filtros de búsqueda y panel de administración.",
+            "highlights": [
+                "Flujo de compra completo.",
+                "Filtros dinámicos para búsqueda.",
+                "Panel de administración optimizado."
+            ],
+            "url": "https://github.com/juangomezn/E-Commerce_Express.git"
+        }
+    ]
+}
