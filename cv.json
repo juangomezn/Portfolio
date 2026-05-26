@@ -1,15 +1,14 @@
 {
     "basics": {
         "name": "Juan David Gomez Niño",
-        "label": "Técnico en Sistemas, Técnico en Desarrollo de Software, Ingeniería Informática (Cursando 5to semestre)",
+        "label": "Técnico en Sistemas, Técnico en Desarrollo de Software, Ingeniería Informática (Cursando 7to semestre)",
         "image": "https://raw.githubusercontent.com/juangomezn/juangomezn/refs/heads/main/profile.png",
         "email": "gomezninoj681@gmail.com",
         "phone": "+57 316 793 4696",
         "url": "",
         "summary": "Técnico en Sistemas, Desarrollador de Software Junior e Ingeniero Informático en formación, con experiencia en proyectos académicos y personales. Especializado en desarrollo web, bases de datos, backend y frontend, trabajando con JavaScript, GitHub, Python, Express, MySQL, HTML, CSS, Node.js y MongoDB. Enfocado en el desarrollo de código escalable y mantenible para lograr resultados de alta calidad. Responsable, atento, con habilidades sociales, trabajo en equipo y actitud autodidacta.",
         "location": {
-            "address": "Cll 2c # 25-98",
-            "postalCode": "",
+            "postalCode": "150461",
             "city": "Duitama",
             "countryCode": "CO",
             "region": "Boyacá, Colombia"
@@ -89,26 +88,19 @@
             ]
         },
         {
-            "name": "Python",
-            "keywords": [
-                "Automatización",
-                "Backend",
-                "Análisis de Datos"
-            ]
-        },
-        {
-            "name": "HTML5",
-            "keywords": [
-                "Desarrollo Web",
-                "Frontend"
-            ]
-        },
-        {
-            "name": "CSS",
+            "name": "TypeScript",
             "keywords": [
                 "Desarrollo Web",
                 "Frontend",
-                "Diseño Responsive"
+                "Backend"
+            ]
+        },
+        {
+            "name": "React",
+            "keywords": [
+                "Frontend",
+                "SPA",
+                "Componentes"
             ]
         },
         {
@@ -126,22 +118,22 @@
             ]
         },
         {
-            "name": "React",
+            "name": "HTML",
             "keywords": [
+                "Desarrollo Web",
+                "Frontend"
+            ]
+        },
+        {
+            "name": "CSS",
+            "keywords": [
+                "Desarrollo Web",
                 "Frontend",
-                "SPA",
-                "Componentes"
+                "Diseño Responsive"
             ]
         },
         {
-            "name": "GitHub",
-            "keywords": [
-                "Control de Versiones",
-                "Colaboración"
-            ]
-        },
-        {
-            "name": "MySQL Workbench",
+            "name": "MySQL",
             "keywords": [
                 "Bases de Datos",
                 "SQL"
@@ -161,9 +153,49 @@
             ]
         },
         {
+            "name": "GitHub",
+            "keywords": [
+                "Control de Versiones",
+                "Colaboración"
+            ]
+        },
+        {
             "name": "Postman",
             "keywords": [
                 "Pruebas de API"
+            ]
+        },
+        {
+            "name": "Python",
+            "keywords": [
+                "Automatización",
+                "Backend",
+                "Análisis de Datos"
+            ]
+        },
+        {
+            "name": "Java",
+            "keywords": [
+                "Backend",
+                "Multiplataforma"
+            ]
+        },
+        {
+            "name": "VS Code",
+            "keywords": [
+                "Editor de Código"
+            ]
+        },
+        {
+            "name": "Cursor",
+            "keywords": [
+                "Editor de Código"
+            ]
+        },
+        {
+            "name": "Warp",
+            "keywords": [
+                "Terminal con IA"
             ]
         }
     ],
@@ -180,25 +212,36 @@
     "projects": [
         {
             "name": "Acme School",
-            "isActive": true,
-            "description": "Plataforma educativa completa con Node.js, MongoDB y React para gestión de cursos, tareas y calificaciones.",
+            "isActive": false,
+            "description": "Plataforma educativa full-stack desarrollada con Node.js, MongoDB y React, orientada a la gestión integral de procesos académicos como cursos, tareas, evaluaciones y seguimiento de estudiantes dentro de un entorno escalable.",
             "highlights": [
-                "Módulos para creación y administración de cursos, tareas y calificaciones.",
-                "Sistema de roles y permisos para control de acceso.",
-                "Notificaciones en tiempo real."
+                "Arquitectura modular para la gestión de cursos, tareas y evaluaciones con separación clara de responsabilidades entre frontend y backend.",
+                "Implementación de sistema de roles y permisos para control de acceso basado en usuarios (RBAC).",
+                "Integración de notificaciones en tiempo real para mejorar la interacción y seguimiento académico."
             ],
             "url": "https://github.com/juangomezn/Proyecto_ExpressJS_GomezJuanDavid.git"
         },
         {
             "name": "E-Commerce",
-            "isActive": true,
-            "description": "Plataforma de comercio electrónico con carrito de compras, filtros de búsqueda y panel de administración.",
+            "isActive": false,
+            "description": "Plataforma de comercio electrónico desarrollada con Node.js y Express, enfocada en la experiencia de usuario, gestión de productos y flujo completo de compra con arquitectura backend orientada a escalabilidad.",
             "highlights": [
-                "Flujo de compra completo.",
-                "Filtros dinámicos para búsqueda.",
-                "Panel de administración optimizado."
+                "Implementación de flujo completo de compra desde selección de productos hasta proceso de checkout.",
+                "Sistema de filtrado dinámico para búsqueda eficiente de productos por categorías y atributos.",
+                "Panel administrativo optimizado para la gestión de inventario, productos y control de datos."
             ],
             "url": "https://github.com/juangomezn/E-Commerce_Express.git"
+        },
+        {
+            "name": "Route 66 Grand Prix",
+            "isActive": true,
+            "description": "Experiencia web inmersiva e interactiva de alto nivel diseñada como invitación digital premium. Integra animaciones fluidas basadas en física, orquestación de audio global controlando políticas de autoplay y diseño de interfaces modernas con Glassmorphism.",
+            "highlights": [
+                "Orquestación y control asíncrono de audio global mediante referencias mutables (useRef) conectadas a la API del DOM.",
+                "Transiciones de interfaz fluidas y desmontaje limpio de componentes utilizando AnimatePresence y animaciones en 3D.",
+                "Estructura visual inmersiva mediante efectos complejos de profundidad (RoadParallax), optimización responsiva y Tailwind CSS."
+            ],
+            "url": "https://lightning-race-invitation.vercel.app/"
         }
     ]
 }
